@@ -111,7 +111,7 @@ def _smtp_converse(
     """
     if debug:
         LOGGER.debug(msg=f'Trying {mx_record} ...')
-    with SMTP(timeout=smtp_timeout) as smtp:
+    with SMTP(host=mx_record, timeout=smtp_timeout) as smtp:
         smtp.set_debuglevel(debuglevel=2 if debug else False)
         code, message = smtp.connect(host=mx_record)
         if code >= 400:
